@@ -68,5 +68,6 @@ int	main(int argc, char **argv)
 	input_control(argc, argv);
 	map = create_map(argv[1]);
 	print_map(map);
+	check_map(map);
 	return (0);
 }

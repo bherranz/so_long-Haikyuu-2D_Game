@@ -22,6 +22,9 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
+//input control
+int		check_map(char **map);
+
 //gnl
 char	*read_buffer(int fd, char *buffer);
 char	*new_line(char *buffer);
