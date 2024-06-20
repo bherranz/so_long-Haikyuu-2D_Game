@@ -21,9 +21,12 @@ void	print_map(char **map)
 	}
 }
 
-void	print_error(char *msg)
+void	print_error(char *msg, char function)
 {
-	perror(msg);
+	if (function == 'p')
+		perror(msg);
+	else
+		write(2, msg, ft_strlen(msg));
 	exit (1);
 }
 
@@ -36,7 +39,7 @@ char	**create_map(char *argv)
 
 	fd = open(argv, O_RDONLY, 0644);
 	if (fd < 0)
-		print_error(argv);
+		print_error(argv, 'p');
 	current = NULL;
 	while (1)
 	{
@@ -52,22 +55,33 @@ char	**create_map(char *argv)
 	return (map);
 }
 
-void	input_control(int argc, char **argv)
+int	count_coins(char **map)
 {
-	if (argc != 2 || ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
+	int	coin;
+
+	coin = 0;
+	while (*map)
 	{
-		write(2, "Error\n", 6);
-		exit (1);
+		while (**map)
+		{
+			if (**map == 'C')
+				coin++;
+			(*map)++;
+		}
+		map++;
 	}
+	return (coin);
 }
 
 int	main(int argc, char **argv)
 {
-	char	**map;
+	t_game	game;
 
-	input_control(argc, argv);
-	map = create_map(argv[1]);
-	print_map(map);
-	check_map(map);
+	if (argc != 2 || ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
+		print_error("Error\n", 'w');
+	game.map = create_map(argv[1]);
+	print_map(game.map);
+	game.coins = count_coins(game.map);
+	check_map(&game);
 	return (0);
 }

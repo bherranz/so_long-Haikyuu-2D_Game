@@ -20,10 +20,24 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <unistd.h>
 # include "../libft/libft.h"
 
+typedef struct s_game
+{
+	char	**map;
+	int		coins;
+}	t_game;
+
+typedef struct s_object
+{
+	int	x;
+	int	y;
+}	t_object;
+
 //input control
-int		check_map(char **map);
+int		check_map(t_game *game);
+void	print_error(char *msg, char function);
 
 //gnl
 char	*read_buffer(int fd, char *buffer);
