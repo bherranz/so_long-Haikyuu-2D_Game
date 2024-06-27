@@ -57,16 +57,18 @@ char	**create_map(char *argv)
 
 int	count_coins(char **map)
 {
-	int	coin;
+	int		coin;
+	char	*row;
 
 	coin = 0;
 	while (*map)
 	{
-		while (**map)
+		row = *map;
+		while (*row)
 		{
-			if (**map == 'C')
+			if (*row == 'C')
 				coin++;
-			(*map)++;
+			row++;
 		}
 		map++;
 	}
