@@ -29,11 +29,11 @@ typedef struct s_game
 	int		coins;
 }	t_game;
 
-typedef struct s_object
+typedef struct s_point
 {
 	int	x;
 	int	y;
-}	t_object;
+}	t_point;
 
 //input control
 int		check_map(t_game *game);
@@ -42,6 +42,8 @@ void	print_error(char *msg, char function);
 //utils
 void	free_str_array(char **str);
 void	print_map(char **map);
+int		count_coins(char **map);
+char	**copy_map(char **map);
 
 //gnl
 char	*read_buffer(int fd, char *buffer);

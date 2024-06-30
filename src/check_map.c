@@ -82,13 +82,58 @@ void	check_chars(t_game *game, char **map)
 		print_error("Error\nWrong map\n", 'w');
 }
 
-// int	is_playable(t_game *game)
-// {
-// 	//chequear si posición actual es 'E' y game->coins == 0
-// 		//devolver 1
-// 	//recursividad moviendo en todas las direcciones posibles	
-// 	return (0);
-// }
+void	fill(char **map, int x, int y)
+{
+	if (map[x][y] == '1')
+		return ;
+	map[x][y] = '1';
+	printf("x: %i	y: %i\n", x, y);
+	fill(map, x + 1, y);
+	fill(map, x - 1, y);
+	fill(map, x, y + 1);
+	fill(map, x, y - 1);
+}
+
+void	is_valid(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+				print_error("Error\nThe map is not playable\n", 'w');
+			j++;
+		}
+		i++;
+	}
+}
+
+void	is_playable(char **map)
+{
+	int		i;
+	int		j;
+	char	**new_map;
+
+	i = 0;
+	new_map = copy_map(map);
+	while (new_map[i])
+	{
+		j = 0;
+		while (new_map[i][j])
+		{
+			if (new_map[i][j] == 'P')
+				fill(new_map, i, j);
+			j++;
+		}
+		i++;
+	}
+	is_valid(new_map);
+}
 
 int	check_map(t_game *game)
 {
@@ -96,7 +141,7 @@ int	check_map(t_game *game)
 	check_walls(game->map);
 	game->coins = 0;
 	check_chars(game, game->map); //también cuenta las monedas
-	//is_playable(game);
+	is_playable(game->map);
 	print_map(game->map);
 	return (0);
 }

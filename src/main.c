@@ -46,26 +46,6 @@ char	**create_map(char *argv)
 	return (map);
 }
 
-int	count_coins(char **map)
-{
-	int		coin;
-	char	*row;
-
-	coin = 0;
-	while (*map)
-	{
-		row = *map;
-		while (*row)
-		{
-			if (*row == 'C')
-				coin++;
-			row++;
-		}
-		map++;
-	}
-	return (coin);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
