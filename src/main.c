@@ -12,15 +12,6 @@
 
 #include "../inc/so_long.h"
 
-void	print_map(char **map)
-{
-	while (*map)
-	{
-		printf("%s\n", *map);
-		map++;
-	}
-}
-
 void	print_error(char *msg, char function)
 {
 	if (function == 'p')
@@ -83,7 +74,7 @@ int	main(int argc, char **argv)
 		print_error("Error\n", 'w');
 	game.map = create_map(argv[1]);
 	print_map(game.map);
-	game.coins = count_coins(game.map);
 	check_map(&game);
+	free_str_array(game.map);
 	return (0);
 }

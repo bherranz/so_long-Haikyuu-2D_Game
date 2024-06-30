@@ -53,32 +53,32 @@ void	check_walls(char **map)
 	}
 }
 
-void	check_chars(char **map)
+void	check_chars(t_game *game, char **map)
 {
-	int	exit;
-	int	start;
-	int	coin;
+	int		exit;
+	int		start;
+	char	*row;
 
 	exit = 0;
 	start = 0;
-	coin = 0;
 	while (*map)
 	{
-		while (**map)
+		row = *map;
+		while (*row)
 		{
-			if (**map == 'C')
-				coin = 1;
-			else if (**map == 'E')
+			if (*row == 'C')
+				game->coins++;
+			else if (*row == 'E')
 				exit++;
-			else if (**map == 'P')
+			else if (*row == 'P')
 				start++;
-			else if (**map != '1' && **map != '0')
+			else if (*row != '1' && *row != '0')
 				print_error("Error\nCharacters not allowed\n", 'w');
-			(*map)++;
+			row++;
 		}
 		map++;
 	}
-	if (exit != 1 || start != 1 || coin == 0)
+	if (exit != 1 || start != 1 || game->coins == 0)
 		print_error("Error\nWrong map\n", 'w');
 }
 
@@ -94,7 +94,9 @@ int	check_map(t_game *game)
 {
 	is_rectangular(game->map);
 	check_walls(game->map);
-	check_chars(game->map);
+	game->coins = 0;
+	check_chars(game, game->map); //también cuenta las monedas
 	//is_playable(game);
+	print_map(game->map);
 	return (0);
 }
