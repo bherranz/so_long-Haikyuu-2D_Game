@@ -87,7 +87,6 @@ void	fill(char **map, int x, int y)
 	if (map[x][y] == '1' || (count_coins(map) != 0 && map[x][y] == 'E'))
 		return ;
 	map[x][y] = '1';
-	printf("x: %i	y: %i\n", x, y);
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);
@@ -133,6 +132,7 @@ void	is_playable(char **map)
 		i++;
 	}
 	is_valid(new_map);
+	free_str_array(new_map);
 }
 
 int	check_map(t_game *game)
