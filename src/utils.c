@@ -55,7 +55,6 @@ int	count_coins(char **map)
 	return (coin);
 }
 
-
 char	**copy_map(char **map)
 {
 	int		rows;
@@ -71,5 +70,5 @@ char	**copy_map(char **map)
 		new_map[rows - 1] = strdup(map[rows - 1]);
 		rows--;
 	}
-	return new_map;
+	return (new_map);
 }

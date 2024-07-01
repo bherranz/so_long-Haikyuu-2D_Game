@@ -27,6 +27,7 @@ typedef struct s_game
 {
 	char	**map;
 	int		coins;
+	size_t	movements;
 }	t_game;
 
 typedef struct s_point

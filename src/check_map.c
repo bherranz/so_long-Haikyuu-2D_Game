@@ -84,7 +84,7 @@ void	check_chars(t_game *game, char **map)
 
 void	fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1')
+	if (map[x][y] == '1' || (count_coins(map) != 0 && map[x][y] == 'E'))
 		return ;
 	map[x][y] = '1';
 	printf("x: %i	y: %i\n", x, y);
