@@ -18,8 +18,11 @@ REMOVE = rm -f
 
 all: ${NAME}
 
+%.o: %.c
+	$(CC) ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
 ${NAME}: ${OBJS} $(LIBFT)
-		${CC} ${CFLAGS} ${OBJS} -L$(LIBFT_DIR) -lft -o ${NAME}
+		${CC} ${CFLAGS} ${OBJS} -L$(LIBFT_DIR) -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz  -o ${NAME}
 
 bonus: ${BONUS_NAME}
 

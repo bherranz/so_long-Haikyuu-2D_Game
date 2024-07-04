@@ -105,7 +105,10 @@ void	is_valid(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'C' || map[i][j] == 'E')
+			{
+				free_str_array(map);
 				print_error("Error\nThe map is not playable\n", 'w');
+			}
 			j++;
 		}
 		i++;
@@ -142,6 +145,5 @@ int	check_map(t_game *game)
 	game->coins = 0;
 	check_chars(game, game->map); //también cuenta las monedas
 	is_playable(game->map);
-	print_map(game->map);
 	return (0);
 }

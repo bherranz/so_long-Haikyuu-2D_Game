@@ -14,10 +14,13 @@
 
 void	print_error(char *msg, char function)
 {
+	size_t	w;
+
 	if (function == 'p')
 		perror(msg);
 	else
-		write(2, msg, ft_strlen(msg));
+		w = write(2, msg, ft_strlen(msg));
+	(void)w;
 	exit (1);
 }
 
@@ -53,8 +56,8 @@ int	main(int argc, char **argv)
 	if (argc != 2 || ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
 		print_error("Error\n", 'w');
 	game.map = create_map(argv[1]);
-	print_map(game.map);
 	check_map(&game);
+	print_map(game.map);
 	free_str_array(game.map);
 	return (0);
 }

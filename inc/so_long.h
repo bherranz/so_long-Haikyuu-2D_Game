@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 
 typedef struct s_game
