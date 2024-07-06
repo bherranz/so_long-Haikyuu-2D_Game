@@ -17,6 +17,9 @@
 #  define BUFFER_SIZE 100
 # endif
 
+#define WIN_WIDTH 800
+#define WIN_HEIGHT 600
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -24,18 +27,38 @@
 # include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	int		*data;
+	int		bpp;
+	int		size_l;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*window;
+	t_img	player;
+	t_img	coin;
+	t_img	exit;
+	t_img	wall;
+}	t_mlx;
+
 typedef struct s_game
 {
 	char	**map;
 	int		coins;
 	size_t	movements;
+	t_mlx	mlx;
 }	t_game;
 
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}	t_point;
+//mlx
+void	start_mlx(t_mlx *mlx);
+void	close_mlx(t_mlx *mlx);
 
 //input control
 int		check_map(t_game *game);

@@ -1,7 +1,7 @@
 NAME = so_long
 BONUS_NAME = .bonus
 
-SRCS = src/main.c src/check_map.c src/utils.c \
+SRCS = src/main.c src/check_map.c src/utils.c src/mlx_utils.c \
 		src/gnl/get_next_line.c src/gnl/get_next_line_utils.c 
 
 BONUS = 

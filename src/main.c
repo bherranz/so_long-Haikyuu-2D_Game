@@ -58,6 +58,9 @@ int	main(int argc, char **argv)
 	game.map = create_map(argv[1]);
 	check_map(&game);
 	print_map(game.map);
+	start_mlx(&game.mlx);
+	close_mlx(&game.mlx);
 	free_str_array(game.map);
 	return (0);
 }
+
