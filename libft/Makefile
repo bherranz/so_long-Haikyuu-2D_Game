@@ -28,10 +28,10 @@ ${NAME}: ${OBJS}
 		@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 clean:
-		${REMOVE} ${OBJS} ${BONUS_OBJS}
+		@${REMOVE} ${OBJS} ${BONUS_OBJS}
 
 fclean: clean
-		${REMOVE} ${NAME} ${BONUS_NAME}
+		@${REMOVE} ${NAME} ${BONUS_NAME}
 
 re: fclean all
 

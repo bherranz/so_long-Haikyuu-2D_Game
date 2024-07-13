@@ -16,37 +16,32 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 REMOVE = rm -f
 
-all: ${NAME}
+MLX_DIR = mlx_linux
+MLX_LIB = $(MLX_DIR)/libmlx.a
 
-%.o: %.c
-	$(CC) ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-${NAME}: ${OBJS} $(LIBFT)
-		${CC} ${CFLAGS} ${OBJS} -L$(LIBFT_DIR) -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz  -o ${NAME}
-
-bonus: ${BONUS_NAME}
-
-${BONUS_NAME}: ${BONUS_OBJS} $(LIBFT)
-		@touch $(BONUS_NAME)
-		${CC} ${CFLAGS} ${BONUS_OBJS} -L$(LIBFT_DIR) -lft -o ${NAME}
+all: $(LIBFT) $(MLX_LIB) $(NAME)
 
 $(LIBFT):
-		make -C $(LIBFT_DIR) all
+	@make -C $(LIBFT_DIR) > /dev/null
+
+$(MLX_LIB):
+	@make -C $(MLX_DIR) > /dev/null
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
-		${REMOVE} ${OBJS} ${BONUS_OBJS}
-		@make -sC $(LIBFT_DIR) clean
-		@rm -rf $(BONUS_NAME)
+	$(REMOVE) $(OBJS)
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(MLX_DIR) clean > /dev/null
 
-fclean: 
-		@${REMOVE} ${OBJS} ${BONUS_OBJS}
-		@${REMOVE} ${NAME} ${PROGRAM}
-		@make -sC $(LIBFT_DIR) fclean
-		@rm -rf $(BONUS_NAME)
+fclean: clean
+	$(REMOVE) $(NAME)
+	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
 clear:
 	@clear
 
-.PHONY:	all clean fclean re clear bonus
+.PHONY: all clean fclean re clear bonus
