@@ -34,6 +34,7 @@ void	close_mlx(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
 		free(mlx->mlx);
+	exit (0);
 }
 
 int	handle_destroy(void *param)
