@@ -26,6 +26,9 @@
 # include <unistd.h>
 # include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+
 
 typedef struct s_img
 {
@@ -59,6 +62,8 @@ typedef struct s_game
 //mlx
 void	start_mlx(t_mlx *mlx);
 void	close_mlx(t_mlx *mlx);
+int		handle_keypress(int keysym, t_mlx *mlx);
+int		handle_destroy(void *param);
 
 //input control
 int		check_map(t_game *game);

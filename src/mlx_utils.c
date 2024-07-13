@@ -36,3 +36,17 @@ void	close_mlx(t_mlx *mlx)
 		free(mlx->mlx);
 }
 
+int	handle_destroy(void *param)
+{
+    close_mlx((t_mlx *)param);
+    return (0);
+}
+
+int	handle_keypress(int keysym, t_mlx *mlx)
+{
+    if (keysym == XK_Escape)
+    {
+        close_mlx(mlx);
+    }
+    return (0);
+}

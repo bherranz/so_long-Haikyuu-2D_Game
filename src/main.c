@@ -59,7 +59,8 @@ int	main(int argc, char **argv)
 	check_map(&game);
 	print_map(game.map);
 	start_mlx(&game.mlx);
-	close_mlx(&game.mlx);
+	mlx_hook(game.mlx.window, KeyPress, KeyPressMask, handle_keypress, &game.mlx);
+	mlx_hook(game.mlx.window, DestroyNotify, NoEventMask, handle_destroy, &game.mlx);
 	free_str_array(game.map);
 	return (0);
 }
