@@ -25,7 +25,6 @@ void	start_mlx(t_mlx *mlx)
 		print_error("Error creating window\n", 'w');
 	}
 	//control errores + iniciar sprites
-	mlx_loop(mlx->mlx);
 }
 
 void	close_mlx(t_mlx *mlx)
@@ -37,17 +36,15 @@ void	close_mlx(t_mlx *mlx)
 	exit (0);
 }
 
-int	handle_destroy(void *param)
+int	destroy(void *param)
 {
-    close_mlx((t_mlx *)param);
-    return (0);
+	close_mlx((t_mlx *)param);
+	return (0);
 }
 
-int	handle_keypress(int keysym, t_mlx *mlx)
+int	keypress(int keysym, t_mlx *mlx)
 {
-    if (keysym == XK_Escape)
-    {
-        close_mlx(mlx);
-    }
-    return (0);
+	if (keysym == XK_Escape)
+		close_mlx(mlx);
+	return (0);
 }

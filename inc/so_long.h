@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 100
 # endif
 
-#define WIN_WIDTH 800
-#define WIN_HEIGHT 600
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,7 +28,6 @@
 # include "../libft/libft.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-
 
 typedef struct s_img
 {
@@ -62,8 +61,8 @@ typedef struct s_game
 //mlx
 void	start_mlx(t_mlx *mlx);
 void	close_mlx(t_mlx *mlx);
-int		handle_keypress(int keysym, t_mlx *mlx);
-int		handle_destroy(void *param);
+int		keypress(int keysym, t_mlx *mlx);
+int		destroy(void *param);
 
 //input control
 int		check_map(t_game *game);
