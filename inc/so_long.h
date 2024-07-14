@@ -17,8 +17,7 @@
 #  define BUFFER_SIZE 100
 # endif
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define TILE_S 64
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -56,10 +55,12 @@ typedef struct s_game
 	int		coins;
 	size_t	movements;
 	t_mlx	mlx;
+	size_t	width;
+	size_t	height;
 }	t_game;
 
 //mlx
-void	start_mlx(t_mlx *mlx);
+void	start_mlx(t_mlx *mlx, int w, int h);
 void	close_mlx(t_mlx *mlx);
 int		keypress(int keysym, t_mlx *mlx);
 int		destroy(void *param);
@@ -73,6 +74,7 @@ void	free_str_array(char **str);
 void	print_map(char **map);
 int		count_coins(char **map);
 char	**copy_map(char **map);
+size_t	ft_strlen_array(char **str);
 
 //gnl
 char	*read_buffer(int fd, char *buffer);

@@ -58,10 +58,9 @@ int	main(int argc, char **argv)
 	game.map = create_map(argv[1]);
 	check_map(&game);
 	print_map(game.map);
-	start_mlx(&game.mlx);
-	mlx_hook(game.mlx.window, KeyPress, KeyPressMask, keypress, &game.mlx);
-	mlx_hook(game.mlx.window, DestroyNotify, NoEventMask, destroy, &game.mlx);
-	mlx_loop(game.mlx.mlx);
+	game.width = ft_strlen(game.map[0]);
+	game.height = ft_strlen_array(game.map);
+	start_mlx(&game.mlx, game.width, game.height);
 	free_str_array(game.map);
 	return (0);
 }
