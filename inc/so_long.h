@@ -17,7 +17,7 @@
 #  define BUFFER_SIZE 100
 # endif
 
-# define TILE_S 64
+# define TILE_S 32
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -43,6 +43,8 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*window;
+	size_t	width;
+	size_t	height;
 	t_img	player;
 	t_img	coin;
 	t_img	exit;
@@ -60,7 +62,7 @@ typedef struct s_game
 }	t_game;
 
 //mlx
-void	start_mlx(t_mlx *mlx, int w, int h);
+void	start_mlx(t_mlx *mlx, int width, int height);
 void	close_mlx(t_mlx *mlx);
 int		keypress(int keysym, t_mlx *mlx);
 int		destroy(void *param);

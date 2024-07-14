@@ -12,12 +12,14 @@
 
 #include "../inc/so_long.h"
 
-void	start_mlx(t_mlx *mlx, int w, int h)
+void	start_mlx(t_mlx *mlx, int width, int height)
 {
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		print_error("Error initializing MLX\n", 'w');
-	mlx->window = mlx_new_window(mlx->mlx, w * TILE_S, h * TILE_S, "Haikyuu!");
+	mlx->width = width * TILE_S;
+	mlx->height = height * TILE_S;
+	mlx->window = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Haikyuu!");
 	if (!mlx->window)
 	{
 		if (mlx->mlx)
