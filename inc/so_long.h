@@ -19,6 +19,13 @@
 
 # define TILE_S 32
 
+//Images paths
+# define PLAYER_IMG "../sprites/player.xpm"
+# define COIN_IMG "../sprites/coin.xpm"
+# define EXIT_IMG "../sprites/exit.xpm"
+# define WALL_IMG "../sprites/wall.xpm"
+# define GROUND_IMG "../sprites/ground.xpm"
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -28,16 +35,16 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-typedef struct s_img
+typedef struct s_image
 {
-	void	*img_ptr;
+	void	*img;
 	int		*data;
 	int		bpp;
 	int		size_l;
 	int		endian;
 	int		width;
 	int		height;
-}	t_img;
+}	t_image;
 
 typedef struct s_mlx
 {
@@ -45,10 +52,11 @@ typedef struct s_mlx
 	void	*window;
 	size_t	width;
 	size_t	height;
-	t_img	player;
-	t_img	coin;
-	t_img	exit;
-	t_img	wall;
+	t_image	player;
+	t_image	coin;
+	t_image	exit;
+	t_image	wall;
+	t_image	ground;
 }	t_mlx;
 
 typedef struct s_game
