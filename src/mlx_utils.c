@@ -27,7 +27,7 @@ void	start_mlx(t_mlx *mlx, t_game *game)
 		print_error("Error creating window\n", 'w');
 	}
 	mlx_hook(mlx->window, KeyPress, KeyPressMask, keypress, game);
-	mlx_hook(mlx->window, DestroyNotify, NoEventMask, destroy, mlx);
+	mlx_hook(mlx->window, DestroyNotify, NoEventMask, destroy, game);
 }
 
 void	close_mlx(t_mlx *mlx)
@@ -35,20 +35,23 @@ void	close_mlx(t_mlx *mlx)
 	if (mlx->window)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
+	{
+		mlx_destroy_display(mlx->mlx);
 		free(mlx->mlx);
+	}
 	exit (0);
 }
 
 int	destroy(void *param)
 {
-	close_mlx((t_mlx *)param);
+	end_game((t_game *)param);
 	return (0);
 }
 
 int	keypress(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
-		close_mlx(&game->mlx);
+		end_game(game);
 	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
 		move_player(game, game->player_x, game->player_y - 1);
 	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)

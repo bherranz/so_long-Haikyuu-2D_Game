@@ -12,16 +12,27 @@
 
 #include "../inc/so_long.h"
 
-void move_player(t_game *game, int new_x, int new_y)
+void	end_game(t_game *game)
 {
-	if (game->map[new_y][new_x] != '1')
+	free_str_array(game->map);
+	free_images(&game->mlx);
+	close_mlx(&game->mlx);
+}
+
+void move_player(t_game *game, int x, int y)
+{
+	if (game->map[y][x] != '1')
 	{
-		if (game->map[new_y][new_x] == 'C')
+		if (game->map[y][x] == 'E' && game->coins != 0)
+			return ;
+		if (game->map[y][x] == 'E' && game->coins == 0)
+			end_game(game);
+		if (game->map[y][x] == 'C')
 			game->coins--;
 		game->map[game->player_y][game->player_x] = '0';
-		game->map[new_y][new_x] = 'P';
-		game->player_x = new_x;
-		game->player_y = new_y;
+		game->map[y][x] = 'P';
+		game->player_x = x;
+		game->player_y = y;
 		game->movements++;
 		draw_map(game);
 		printf("Movements: %zu\n", game->movements);

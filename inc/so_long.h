@@ -80,15 +80,17 @@ int		destroy(void *param);
 //image utils
 void	init_images(t_mlx *mlx);
 void	draw_map(t_game *game);
+void	free_images(t_mlx *mlx);
 
 //move
 void	move_player(t_game *game, int new_x, int new_y);
 
 //input control
 int		check_map(t_game *game);
-void	print_error(char *msg, char function);
+void	print_error(char *msg, char function, t_game *game);
 
 //utils
+void	end_game(t_game *game);
 void	free_str_array(char **str);
 void	print_map(char **map);
 int		count_coins(char **map);

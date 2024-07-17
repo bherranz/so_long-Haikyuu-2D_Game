@@ -60,3 +60,17 @@ void	draw_map(t_game *game)
 		i++;
 	}
 }
+
+void	free_images(t_mlx *mlx)
+{
+	if (mlx->player.img)
+		mlx_destroy_image(mlx->mlx, mlx->player.img);
+	if (mlx->coin.img)
+		mlx_destroy_image(mlx->mlx, mlx->coin.img);
+	if (mlx->exit.img)
+		mlx_destroy_image(mlx->mlx, mlx->exit.img);
+	if (mlx->wall.img)
+		mlx_destroy_image(mlx->mlx, mlx->wall.img);
+	if (mlx->ground.img)
+		mlx_destroy_image(mlx->mlx, mlx->ground.img);
+}

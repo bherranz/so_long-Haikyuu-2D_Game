@@ -12,15 +12,13 @@
 
 #include "../inc/so_long.h"
 
-void	print_error(char *msg, char function)
+void	print_error(char *msg, char function, t_game *game)
 {
-	size_t	w;
-
 	if (function == 'p')
 		perror(msg);
 	else
-		w = write(2, msg, ft_strlen(msg));
-	(void)w;
+		write(2, msg, ft_strlen(msg));
+	free_str_array(game->map);
 	exit (1);
 }
 
@@ -33,7 +31,7 @@ char	**create_map(char *argv)
 
 	fd = open(argv, O_RDONLY, 0644);
 	if (fd < 0)
-		print_error(argv, 'p');
+		print_error(argv, 'p', NULL);
 	current = NULL;
 	while (1)
 	{
@@ -54,7 +52,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2 || ft_strcmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber") != 0)
-		print_error("Error\n", 'w');
+		print_error("Error\n", 'w', NULL);
 	game.map = create_map(argv[1]);
 	check_map(&game);
 	game.width = ft_strlen(game.map[0]);
@@ -65,6 +63,6 @@ int	main(int argc, char **argv)
 	print_map(game.map);
 	draw_map(&game);
 	mlx_loop(game.mlx.mlx);
-	free_str_array(game.map);
+	end_game(&game);
 	return (0);
 }

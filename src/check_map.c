@@ -12,7 +12,7 @@
 
 #include "../inc/so_long.h"
 
-void	is_rectangular(char **map)
+void	is_rectangular(char **map, t_game *game)
 {
 	size_t	size;
 
@@ -20,12 +20,12 @@ void	is_rectangular(char **map)
 	while (*map)
 	{
 		if (size != ft_strlen(*map))
-			print_error("Error\nThe map must be rectangular\n", 'w');
+			print_error("Error\nThe map must be rectangular\n", 'w', game);
 		map++;
 	}
 }
 
-void	check_walls(char **map)
+void	check_walls(char **map, t_game *game)
 {
 	int	i;
 	int	j;
@@ -34,21 +34,21 @@ void	check_walls(char **map)
 	while (map[0][j])
 	{
 		if (map[0][j] != '1')
-			print_error("Error\nThe map must be surrounded by wall\n", 'w');
+			print_error("Error\nMap must be surrounded by wall\n", 'w', game);
 		j++;
 	}
 	i = 1;
 	while (map[i + 1])
 	{
 		if ((map[i][0] != '1') || (map[i][ft_strlen(map[i]) - 1] != '1'))
-			print_error("Error\nThe map must be surrounded by wall\n", 'w');
+			print_error("Error\nMap must be surrounded by wall\n", 'w', game);
 		i++;
 	}
 	j = 0;
 	while (map[i][j])
 	{
 		if (map[i][j] != '1')
-			print_error("Error\nThe map must be surrounded by wall\n", 'w');
+			print_error("Error\nMap must be surrounded by wall\n", 'w', game);
 		j++;
 	}
 }
@@ -73,13 +73,13 @@ void	check_chars(t_game *game, char **map)
 			else if (*row == 'P')
 				start++;
 			else if (*row != '1' && *row != '0')
-				print_error("Error\nCharacters not allowed\n", 'w');
+				print_error("Error\nCharacters not allowed\n", 'w', game);
 			row++;
 		}
 		map++;
 	}
 	if (exit != 1 || start != 1 || game->coins == 0)
-		print_error("Error\nWrong map\n", 'w');
+		print_error("Error\nWrong map\n", 'w', game);
 }
 
 void	fill(char **map, int x, int y)
@@ -93,7 +93,7 @@ void	fill(char **map, int x, int y)
 	fill(map, x, y - 1);
 }
 
-void	is_valid(char **map)
+void	is_valid(char **map, t_game *game)
 {
 	int	i;
 	int	j;
@@ -107,7 +107,7 @@ void	is_valid(char **map)
 			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
 				free_str_array(map);
-				print_error("Error\nThe map is not playable\n", 'w');
+				print_error("Error\nThe map is not playable\n", 'w', game);
 			}
 			j++;
 		}
@@ -138,14 +138,13 @@ void	is_playable(char **map, t_game *game)
 		}
 		i++;
 	}
-	is_valid(new_map);
-	free_str_array(new_map);
+	is_valid(new_map, game);
 }
 
 int	check_map(t_game *game)
 {
-	is_rectangular(game->map);
-	check_walls(game->map);
+	is_rectangular(game->map, game);
+	check_walls(game->map, game);
 	game->coins = 0;
 	check_chars(game, game->map); //también cuenta las monedas
 	is_playable(game->map, game); //también asigna la posición al jugador
