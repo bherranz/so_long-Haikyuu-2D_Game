@@ -12,39 +12,49 @@
 
 #include "../inc/so_long.h"
 
-void	init_images(t_game *game, t_mlx *mlx)
+void	init_images(t_mlx *mlx)
 {
-	mlx->player.img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG, &mlx->player.width, &mlx->player.height);
-	mlx->coin.img = mlx_xpm_file_to_image(mlx->mlx, COIN_IMG, &mlx->coin.width, &mlx->coin.height);
-	mlx->exit.img = mlx_xpm_file_to_image(mlx->mlx, EXIT_IMG, &mlx->exit.width, &mlx->exit.height);
-	mlx->wall.img = mlx_xpm_file_to_image(mlx->mlx, WALL_IMG, &mlx->wall.width, &mlx->wall.height);
-	mlx->ground.img = mlx_xpm_file_to_image(mlx->mlx, GROUND_IMG, &mlx->ground.width, &mlx->ground.height);
-
-	if (!mlx->player.img || !mlx->coin.img || !mlx->exit.img || !mlx->wall.img || !mlx->ground.img)
+	mlx->player.img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+			&mlx->player.width, &mlx->player.height);
+	mlx->coin.img = mlx_xpm_file_to_image(mlx->mlx, COIN_IMG,
+			&mlx->coin.width, &mlx->coin.height);
+	mlx->exit.img = mlx_xpm_file_to_image(mlx->mlx, EXIT_IMG,
+			&mlx->exit.width, &mlx->exit.height);
+	mlx->wall.img = mlx_xpm_file_to_image(mlx->mlx, WALL_IMG,
+			&mlx->wall.width, &mlx->wall.height);
+	mlx->ground.img = mlx_xpm_file_to_image(mlx->mlx, GROUND_IMG,
+			&mlx->ground.width, &mlx->ground.height);
+	if (!mlx->player.img || !mlx->coin.img || !mlx->exit.img
+		|| !mlx->wall.img || !mlx->ground.img)
 		print_error("Error loading images\n", 'w');
 }
 
-void draw_map(t_game *game)
+void	draw_tile(t_mlx *mlx, void *img, int x, int y)
 {
-	int	i;
-	int	j;
+	mlx_put_image_to_window(mlx->mlx, mlx->window, img, x * TILE_S, y * TILE_S);
+}
+
+void	draw_map(t_game *game)
+{
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	j = 0;
 	while (i < game->height)
 	{
+		j = 0;
 		while (j < game->width)
 		{
 			if (game->map[i][j] == '1')
-                draw_tile(&game->mlx, game->mlx.wall.img, x, y);
-            else if (game->map[i][j] == 'C')
-                draw_tile(&game->mlx, game->mlx.coin.img, x, y);
-            else if (game->map[i][j] == 'E')
-                draw_tile(&game->mlx, game->mlx.exit.img, x, y);
-            else if (game->map[i][j] == 'P')
-                draw_tile(&game->mlx, game->mlx.player.img, x, y);
-            else
-                draw_tile(&game->mlx, game->mlx.ground.img, x, y);
+				draw_tile(&game->mlx, game->mlx.wall.img, j, i);
+			else if (game->map[i][j] == 'C')
+				draw_tile(&game->mlx, game->mlx.coin.img, j, i);
+			else if (game->map[i][j] == 'E')
+				draw_tile(&game->mlx, game->mlx.exit.img, j, i);
+			else if (game->map[i][j] == 'P')
+				draw_tile(&game->mlx, game->mlx.player.img, j, i);
+			else
+				draw_tile(&game->mlx, game->mlx.ground.img, j, i);
 			j++;
 		}
 		i++;

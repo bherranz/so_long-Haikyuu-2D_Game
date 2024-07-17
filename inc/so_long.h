@@ -20,11 +20,11 @@
 # define TILE_S 32
 
 //Images paths
-# define PLAYER_IMG "../sprites/player.xpm"
-# define COIN_IMG "../sprites/coin.xpm"
-# define EXIT_IMG "../sprites/exit.xpm"
-# define WALL_IMG "../sprites/wall.xpm"
-# define GROUND_IMG "../sprites/ground.xpm"
+# define PLAYER_IMG "sprites/player.xpm"
+# define COIN_IMG "sprites/coin.xpm"
+# define EXIT_IMG "sprites/exit.xpm"
+# define WALL_IMG "sprites/wall.xpm"
+# define GROUND_IMG "sprites/ground.xpm"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -67,13 +67,22 @@ typedef struct s_game
 	t_mlx	mlx;
 	size_t	width;
 	size_t	height;
+	size_t	player_x;
+	size_t	player_y;
 }	t_game;
 
 //mlx
-void	start_mlx(t_mlx *mlx, int width, int height);
+void	start_mlx(t_mlx *mlx, t_game *game);
 void	close_mlx(t_mlx *mlx);
-int		keypress(int keysym, t_mlx *mlx);
+int		keypress(int keysym, t_game *game);
 int		destroy(void *param);
+
+//image utils
+void	init_images(t_mlx *mlx);
+void	draw_map(t_game *game);
+
+//move
+void	move_player(t_game *game, int new_x, int new_y);
 
 //input control
 int		check_map(t_game *game);

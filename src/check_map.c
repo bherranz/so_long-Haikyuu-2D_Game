@@ -115,7 +115,7 @@ void	is_valid(char **map)
 	}
 }
 
-void	is_playable(char **map)
+void	is_playable(char **map, t_game *game)
 {
 	int		i;
 	int		j;
@@ -129,7 +129,11 @@ void	is_playable(char **map)
 		while (new_map[i][j])
 		{
 			if (new_map[i][j] == 'P')
+			{
+				game->player_x = j;
+				game->player_y = i;
 				fill(new_map, i, j);
+			}
 			j++;
 		}
 		i++;
@@ -144,6 +148,6 @@ int	check_map(t_game *game)
 	check_walls(game->map);
 	game->coins = 0;
 	check_chars(game, game->map); //también cuenta las monedas
-	is_playable(game->map);
+	is_playable(game->map, game); //también asigna la posición al jugador
 	return (0);
 }

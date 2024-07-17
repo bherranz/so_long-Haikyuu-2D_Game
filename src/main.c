@@ -57,10 +57,14 @@ int	main(int argc, char **argv)
 		print_error("Error\n", 'w');
 	game.map = create_map(argv[1]);
 	check_map(&game);
-	print_map(game.map);
 	game.width = ft_strlen(game.map[0]);
 	game.height = ft_strlen_array(game.map);
-	start_mlx(&game.mlx, game.width, game.height);
+	game.movements = 0;
+	start_mlx(&game.mlx, &game);
+	init_images(&game.mlx);
+	print_map(game.map);
+	draw_map(&game);
+	mlx_loop(game.mlx.mlx);
 	free_str_array(game.map);
 	return (0);
 }
