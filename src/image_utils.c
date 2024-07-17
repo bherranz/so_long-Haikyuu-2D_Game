@@ -12,7 +12,7 @@
 
 #include "../inc/so_long.h"
 
-void	init_images(t_mlx *mlx)
+void	init_images(t_mlx *mlx, t_game *game)
 {
 	mlx->player.img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
 			&mlx->player.width, &mlx->player.height);
@@ -26,7 +26,7 @@ void	init_images(t_mlx *mlx)
 			&mlx->ground.width, &mlx->ground.height);
 	if (!mlx->player.img || !mlx->coin.img || !mlx->exit.img
 		|| !mlx->wall.img || !mlx->ground.img)
-		print_error("Error loading images\n", 'w');
+		print_error("Error loading images\n", 'w', game);
 }
 
 void	draw_tile(t_mlx *mlx, void *img, int x, int y)

@@ -78,7 +78,7 @@ int		keypress(int keysym, t_game *game);
 int		destroy(void *param);
 
 //image utils
-void	init_images(t_mlx *mlx);
+void	init_images(t_mlx *mlx, t_game *game);
 void	draw_map(t_game *game);
 void	free_images(t_mlx *mlx);
 

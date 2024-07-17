@@ -16,7 +16,7 @@ void	start_mlx(t_mlx *mlx, t_game *game)
 {
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
-		print_error("Error initializing MLX\n", 'w');
+		print_error("Error initializing MLX\n", 'w', game);
 	mlx->width = game->width * TILE_S;
 	mlx->height = game->height * TILE_S;
 	mlx->window = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "Haikyuu!");
@@ -24,7 +24,7 @@ void	start_mlx(t_mlx *mlx, t_game *game)
 	{
 		if (mlx->mlx)
 			free(mlx->mlx);
-		print_error("Error creating window\n", 'w');
+		print_error("Error creating window\n", 'w', game);
 	}
 	mlx_hook(mlx->window, KeyPress, KeyPressMask, keypress, game);
 	mlx_hook(mlx->window, DestroyNotify, NoEventMask, destroy, game);

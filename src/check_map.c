@@ -113,6 +113,7 @@ void	is_valid(char **map, t_game *game)
 		}
 		i++;
 	}
+	free_str_array(map);
 }
 
 void	is_playable(char **map, t_game *game)
