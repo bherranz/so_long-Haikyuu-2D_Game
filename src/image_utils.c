@@ -26,7 +26,11 @@ void	init_images(t_mlx *mlx, t_game *game)
 			&mlx->ground.width, &mlx->ground.height);
 	if (!mlx->player.img || !mlx->coin.img || !mlx->exit.img
 		|| !mlx->wall.img || !mlx->ground.img)
+	{
+		free_images(&game->mlx);
+		close_mlx(&game->mlx);
 		print_error("Error loading images\n", 'w', game);
+	}
 }
 
 void	draw_tile(t_mlx *mlx, void *img, int x, int y)

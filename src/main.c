@@ -21,11 +21,6 @@ void	print_error(char *msg, char function, t_game *game)
 	if (game)
 	{
 		free_str_array(game->map);
-		if (&game->mlx)
-		{
-			free_images(&game->mlx);
-			close_mlx(&game->mlx);
-		}
 	}
 	exit (1);
 }
@@ -66,6 +61,7 @@ int	main(int argc, char **argv)
 	game.width = ft_strlen(game.map[0]);
 	game.height = ft_strlen_array(game.map);
 	game.movements = 0;
+	game.mlx.mlx = NULL;
 	start_mlx(&game.mlx, &game);
 	init_images(&game.mlx, &game);
 	print_map(game.map);
