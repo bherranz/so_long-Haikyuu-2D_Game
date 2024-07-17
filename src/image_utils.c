@@ -27,8 +27,14 @@ void	init_images(t_mlx *mlx, t_game *game)
 	if (!mlx->player.img || !mlx->coin.img || !mlx->exit.img
 		|| !mlx->wall.img || !mlx->ground.img)
 	{
-		free_images(&game->mlx);
-		close_mlx(&game->mlx);
+		free_images(mlx);
+		if (mlx->window)
+			mlx_destroy_window(mlx->mlx, mlx->window);
+		if (mlx->mlx)
+		{
+			mlx_destroy_display(mlx->mlx);
+			free(mlx->mlx);
+		}
 		print_error("Error loading images\n", 'w', game);
 	}
 }
