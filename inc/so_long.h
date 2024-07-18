@@ -17,14 +17,26 @@
 #  define BUFFER_SIZE 100
 # endif
 
-# define TILE_S 32
+# define TILE_S 81
 
 //Images paths
-# define PLAYER_IMG "sprites/player.xpm"
 # define COIN_IMG "sprites/coin.xpm"
 # define EXIT_IMG "sprites/exit.xpm"
 # define WALL_IMG "sprites/wall.xpm"
 # define GROUND_IMG "sprites/ground.xpm"
+//Hinata paths
+# define DOWN0 "sprites/player/tile000.xpm"
+# define DOWN1 "sprites/player/tile001.xpm"
+# define DOWN2 "sprites/player/tile002.xpm"
+# define LEFT0 "sprites/player/tile003.xpm"
+# define LEFT1 "sprites/player/tile004.xpm"
+# define LEFT2 "sprites/player/tile005.xpm"
+# define RIGHT0 "sprites/player/tile006.xpm"
+# define RIGHT1 "sprites/player/tile007.xpm"
+# define RIGHT2 "sprites/player/tile008.xpm"
+# define UP0 "sprites/player/tile009.xpm"
+# define UP1 "sprites/player/tile010.xpm"
+# define UP2 "sprites/player/tile011.xpm"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -52,7 +64,7 @@ typedef struct s_mlx
 	void	*window;
 	size_t	width;
 	size_t	height;
-	t_image	player;
+	t_image	**player;
 	t_image	coin;
 	t_image	exit;
 	t_image	wall;
@@ -69,6 +81,7 @@ typedef struct s_game
 	size_t	height;
 	size_t	player_x;
 	size_t	player_y;
+	char	*dir;
 }	t_game;
 
 //mlx
@@ -83,7 +96,7 @@ void	draw_map(t_game *game);
 void	free_images(t_mlx *mlx);
 
 //move
-void	move_player(t_game *game, int new_x, int new_y);
+void	move_player(t_game *game, int x, int y, char *dir);
 
 //input control
 int		check_map(t_game *game);

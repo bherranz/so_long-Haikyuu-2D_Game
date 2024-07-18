@@ -53,12 +53,12 @@ int	keypress(int keysym, t_game *game)
 	if (keysym == XK_Escape)
 		end_game(game);
 	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
-		move_player(game, game->player_x, game->player_y - 1);
+		move_player(game, game->player_x, game->player_y - 1, "Up");
 	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
-		move_player(game, game->player_x, game->player_y + 1);
+		move_player(game, game->player_x, game->player_y + 1, "Down");
 	else if (keysym == XK_a || keysym == XK_A || keysym == XK_Left)
-		move_player(game, game->player_x - 1, game->player_y);
+		move_player(game, game->player_x - 1, game->player_y, "Left");
 	else if (keysym == XK_d || keysym == XK_D || keysym == XK_Right)
-		move_player(game, game->player_x + 1, game->player_y);
+		move_player(game, game->player_x + 1, game->player_y, "Right");
 	return (0);
 }

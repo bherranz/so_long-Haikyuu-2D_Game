@@ -62,7 +62,8 @@ void	draw_map(t_game *game)
 			else if (game->map[i][j] == 'E')
 				draw_tile(&game->mlx, game->mlx.exit.img, j, i);
 			else if (game->map[i][j] == 'P')
-				draw_tile(&game->mlx, game->mlx.player.img, j, i);
+				draw_player(game);
+				//draw_tile(&game->mlx, game->mlx.player.img, j, i);
 			else
 				draw_tile(&game->mlx, game->mlx.ground.img, j, i);
 			j++;
@@ -83,4 +84,32 @@ void	free_images(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->wall.img);
 	if (mlx->ground.img)
 		mlx_destroy_image(mlx->mlx, mlx->ground.img);
+}
+
+void	init_player(t_mlx *mlx, t_game *game)
+{
+	mlx->player[0][0].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[0][0].width, mlx->player[0][0].height);
+	mlx->player[0][1].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[0][1].width, mlx->player[0][1].height);
+	mlx->player[0][2].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[0][2].width, mlx->player[0][2].height);
+	mlx->player[1][0].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[1][0].width, mlx->player[1][0].height);
+	mlx->player[1][1].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[1][1].width, mlx->player[1][1].height);
+	mlx->player[1][2].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[1][2].width, mlx->player[1][2].height);
+	mlx->player[2][0].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[2][0].width, mlx->player[2][0].height);
+	mlx->player[2][1].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[2][1].width, mlx->player[2][1].height);
+	mlx->player[2][2].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[2][2].width, mlx->player[2][2].height);
+	mlx->player[3][0].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[3][0].width, mlx->player[3][0].height);
+	mlx->player[3][1].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[3][1].width, mlx->player[3][1].height);
+	mlx->player[3][2].img = mlx_xpm_file_to_image(mlx->mlx, PLAYER_IMG,
+		mlx->player[3][2].width, mlx->player[3][2].height);
 }

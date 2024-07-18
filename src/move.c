@@ -19,7 +19,7 @@ void	end_game(t_game *game)
 	close_mlx(&game->mlx);
 }
 
-void move_player(t_game *game, int x, int y)
+void move_player(t_game *game, int x, int y, char *dir)
 {
 	if (game->map[y][x] != '1')
 	{
@@ -33,6 +33,7 @@ void move_player(t_game *game, int x, int y)
 		game->map[y][x] = 'P';
 		game->player_x = x;
 		game->player_y = y;
+		game->dir = dir;
 		game->movements++;
 		draw_map(game);
 		printf("Movements: %zu\n", game->movements);
