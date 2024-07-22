@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 	game.mlx.mlx = NULL;
 	start_mlx(&game.mlx, &game);
 	init_images(&game.mlx, &game);
+	draw_map(&game);
 	mlx_loop(game.mlx.mlx);
 	end_game(&game, 0);
 	return (0);

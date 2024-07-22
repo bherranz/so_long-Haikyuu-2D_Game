@@ -92,7 +92,9 @@ int		destroy(void *param);
 
 //image utils
 void	init_images(t_mlx *mlx, t_game *game);
+void	draw_tile(t_mlx *mlx, void *img, int x, int y);
 int		draw_map(t_game *game);
+void	draw(t_game *game, int i, int j);
 void	free_images(t_mlx *mlx);
 
 //move

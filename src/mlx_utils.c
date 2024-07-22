@@ -28,7 +28,7 @@ void	start_mlx(t_mlx *mlx, t_game *game)
 	}
 	mlx_hook(mlx->window, KeyPress, KeyPressMask, keypress, game);
 	mlx_hook(mlx->window, DestroyNotify, NoEventMask, destroy, game);
-	mlx_loop_hook(mlx->mlx, draw_map, game);
+	//mlx_loop_hook(mlx->mlx, draw_player, game);
 }
 
 void	close_mlx(t_mlx *mlx)
