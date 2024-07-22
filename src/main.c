@@ -19,9 +19,7 @@ void	print_error(char *msg, char function, t_game *game)
 	else
 		write(2, msg, ft_strlen(msg));
 	if (game)
-	{
 		free_str_array(game->map);
-	}
 	exit (1);
 }
 
@@ -64,9 +62,7 @@ int	main(int argc, char **argv)
 	game.mlx.mlx = NULL;
 	start_mlx(&game.mlx, &game);
 	init_images(&game.mlx, &game);
-	print_map(game.map);
-	draw_map(&game);
 	mlx_loop(game.mlx.mlx);
-	end_game(&game);
+	end_game(&game, 0);
 	return (0);
 }

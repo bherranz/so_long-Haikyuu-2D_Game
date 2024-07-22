@@ -12,11 +12,13 @@
 
 #include "../inc/so_long.h"
 
-void	end_game(t_game *game)
+void	end_game(t_game *game, int error)
 {
 	free_str_array(game->map);
 	free_images(&game->mlx);
 	close_mlx(&game->mlx);
+	if (error == 0)
+		exit (0);
 }
 
 void move_player(t_game *game, int x, int y, char *dir)
@@ -26,7 +28,7 @@ void move_player(t_game *game, int x, int y, char *dir)
 		if (game->map[y][x] == 'E' && game->coins != 0)
 			return ;
 		if (game->map[y][x] == 'E' && game->coins == 0)
-			end_game(game);
+			end_game(game, 0);
 		if (game->map[y][x] == 'C')
 			game->coins--;
 		game->map[game->player_y][game->player_x] = '0';
@@ -35,7 +37,7 @@ void move_player(t_game *game, int x, int y, char *dir)
 		game->player_y = y;
 		game->dir = dir;
 		game->movements++;
-		draw_map(game);
+		//draw_map(game);
 		printf("Movements: %zu\n", game->movements);
 	}
 }

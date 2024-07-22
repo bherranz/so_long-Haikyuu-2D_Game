@@ -64,7 +64,7 @@ typedef struct s_mlx
 	void	*window;
 	size_t	width;
 	size_t	height;
-	t_image	**player;
+	t_image	player[4][3];
 	t_image	coin;
 	t_image	exit;
 	t_image	wall;
@@ -92,7 +92,7 @@ int		destroy(void *param);
 
 //image utils
 void	init_images(t_mlx *mlx, t_game *game);
-void	draw_map(t_game *game);
+int		draw_map(t_game *game);
 void	free_images(t_mlx *mlx);
 
 //move
@@ -103,7 +103,7 @@ int		check_map(t_game *game);
 void	print_error(char *msg, char function, t_game *game);
 
 //utils
-void	end_game(t_game *game);
+void	end_game(t_game *game, int error);
 void	free_str_array(char **str);
 void	print_map(char **map);
 int		count_coins(char **map);
