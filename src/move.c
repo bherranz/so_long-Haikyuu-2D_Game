@@ -23,6 +23,7 @@ void	end_game(t_game *game, int error)
 
 void move_player(t_game *game, int x, int y, char *dir)
 {
+	game->dir = dir;
 	if (game->map[y][x] != '1')
 	{
 		if (game->map[y][x] == 'E' && game->coins != 0)
@@ -36,7 +37,6 @@ void move_player(t_game *game, int x, int y, char *dir)
 		game->map[y][x] = 'P';
 		game->player_x = x;
 		game->player_y = y;
-		game->dir = dir;
 		game->movements++;
 		printf("Movements: %zu\n", game->movements);
 	}
