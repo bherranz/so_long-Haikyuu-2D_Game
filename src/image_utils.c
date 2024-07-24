@@ -65,12 +65,25 @@ void	init_images(t_mlx *mlx, t_game *game)
 	}
 }
 
-// void	draw_player(t_game *game)
-// {
-// 	//if (ft_strcmp(game->dir, "Down"))
+int	draw_player(t_game *game)
+{
+	static float	module; 
 
-
-// }
+	module += 0.0005;
+	if (ft_strcmp(game->dir, "Down") == 0)
+		draw_tile(&game->mlx, game->mlx.player[0][(int)module % 3].img,
+				game->player_x, game->player_y);
+	else if (ft_strcmp(game->dir, "Left") == 0)
+		draw_tile(&game->mlx, game->mlx.player[1][(int)module % 3 ].img,
+				game->player_x, game->player_y);
+	else if (ft_strcmp(game->dir, "Right") == 0)
+		draw_tile(&game->mlx, game->mlx.player[2][(int)module % 3 ].img,
+				game->player_x, game->player_y);
+	else if (ft_strcmp(game->dir, "Up") == 0)
+		draw_tile(&game->mlx, game->mlx.player[3][(int)module % 3 ].img,
+				game->player_x, game->player_y);
+	return (0);
+}
 
 void	draw_tile(t_mlx *mlx, void *img, int x, int y)
 {

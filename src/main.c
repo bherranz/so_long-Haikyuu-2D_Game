@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 	game.height = ft_strlen_array(game.map);
 	game.movements = 0;
 	game.mlx.mlx = NULL;
+	game.dir = "Down";
 	start_mlx(&game.mlx, &game);
 	init_images(&game.mlx, &game);
 	draw_map(&game);

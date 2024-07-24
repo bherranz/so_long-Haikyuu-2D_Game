@@ -32,12 +32,10 @@ void move_player(t_game *game, int x, int y, char *dir)
 		if (game->map[y][x] == 'C')
 			game->coins--;
 		game->map[game->player_y][game->player_x] = '0';
-		draw_tile(&game->mlx, game->mlx.ground.img, game->player_x, game->player_y);
-		//draw(game, game->player_y, game->player_x);
+		draw(game, game->player_y, game->player_x);
 		game->map[y][x] = 'P';
 		game->player_x = x;
 		game->player_y = y;
-		draw(game, game->player_y, game->player_x);
 		game->dir = dir;
 		game->movements++;
 		printf("Movements: %zu\n", game->movements);
