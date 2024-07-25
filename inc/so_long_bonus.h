@@ -102,6 +102,8 @@ void	draw_tile(t_mlx *mlx, void *img, int x, int y);
 int		draw_map(t_game *game);
 void	draw(t_game *game, int i, int j);
 int		draw_player(t_game *game);
+//movements bonus
+int		show_movements(t_game *game);
 
 //move
 void	move_player(t_game *game, int x, int y, char *dir);

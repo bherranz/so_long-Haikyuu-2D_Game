@@ -12,6 +12,25 @@
 
 #include "../inc/so_long_bonus.h"
 
+int	show_movements(t_game *game)
+{
+	char	*movement;
+	char	*text;
+	char	*str;
+
+	movement = ft_itoa(game->movements);
+	text = ft_strdup("Movements: ");
+	if (!movement)
+		end_game(game, 1);
+	str = ft_strjoin(text, movement);
+	free(movement);
+	if (!str)
+		end_game(game, 1);
+	mlx_string_put(game->mlx.mlx, game->mlx.window, 10, 10, 0x000000, str);
+	free(str);
+	return (0);
+}
+
 int	draw_player(t_game *game)
 {
 	static float	module;
@@ -29,6 +48,7 @@ int	draw_player(t_game *game)
 	else if (ft_strcmp(game->dir, "Up") == 0)
 		draw_tile(&game->mlx, game->mlx.player[3][(int)module % 3].img,
 			game->player_x, game->player_y);
+	show_movements(game);
 	return (0);
 }
 

@@ -14,10 +14,11 @@
 
 void	fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || map[x][y] == '!' || (count_coins(map) != 0
-		&& map[x][y] == 'E'))
+	if (map[x][y] == '1' || map[x][y] == '!')
 		return ;
 	map[x][y] = '1';
+	if (map[x][y] == 'E')
+		return ;
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);
