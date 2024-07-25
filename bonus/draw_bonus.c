@@ -26,7 +26,7 @@ int	show_movements(t_game *game)
 	free(movement);
 	if (!str)
 		end_game(game, 1);
-	mlx_string_put(game->mlx.mlx, game->mlx.window, 10, 10, 0x000000, str);
+	mlx_string_put(game->mlx.mlx, game->mlx.window, 15, 10, 0x000000, str);
 	free(str);
 	return (0);
 }
@@ -48,6 +48,7 @@ int	draw_player(t_game *game)
 	else if (ft_strcmp(game->dir, "Up") == 0)
 		draw_tile(&game->mlx, game->mlx.player[3][(int)module % 3].img,
 			game->player_x, game->player_y);
+	draw_tile(&game->mlx, game->mlx.wall.img, 1, 0);
 	show_movements(game);
 	return (0);
 }
