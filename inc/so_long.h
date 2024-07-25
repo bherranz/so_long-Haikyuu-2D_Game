@@ -23,7 +23,7 @@
 # define COIN_IMG "textures/coin.xpm"
 # define EXIT_IMG "textures/exit.xpm"
 # define WALL_IMG "textures/wall.xpm"
-# define GROUND_IMG "textures/enemy.xpm"
+# define GROUND_IMG "textures/ground.xpm"
 //Hinata paths
 # define DOWN0 "textures/player/tile000.xpm"
 # define DOWN1 "textures/player/tile001.xpm"
