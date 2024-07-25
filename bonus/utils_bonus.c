@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || (count_coins(map) != 0 && map[x][y] == 'E'))
+	if (map[x][y] == '1' || map[x][y] == '!' || (count_coins(map) != 0
+		&& map[x][y] == 'E'))
 		return ;
 	map[x][y] = '1';
 	fill(map, x + 1, y);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	print_error(char *msg, char function, t_game *game)
 {

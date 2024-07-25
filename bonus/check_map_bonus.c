@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	is_rectangular(char **map, t_game *game)
 {
@@ -72,7 +72,7 @@ void	check_chars(t_game *game, char **map)
 				exit++;
 			else if (*row == 'P')
 				start++;
-			else if (*row != '1' && *row != '0')
+			else if (*row != '1' && *row != '0' && *row != '!')
 				print_error("Error\nCharacters not allowed\n", 'w', game);
 			row++;
 		}

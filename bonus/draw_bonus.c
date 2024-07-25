@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 int	draw_player(t_game *game)
 {
@@ -49,6 +49,8 @@ void	draw(t_game *game, int i, int j)
 		draw_tile(&game->mlx, game->mlx.player[0][1].img, j, i);
 	else if (game->map[i][j] == '0')
 		draw_tile(&game->mlx, game->mlx.ground.img, j, i);
+	else if (game->map[i][j] == '!')
+		draw_tile(&game->mlx, game->mlx.enemy.img, j, i);
 }
 
 int	draw_map(t_game *game)

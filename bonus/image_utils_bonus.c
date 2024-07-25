@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	init_player(t_mlx *mlx)
 {
@@ -51,9 +51,11 @@ void	init_images(t_mlx *mlx, t_game *game)
 			&mlx->wall.width, &mlx->wall.height);
 	mlx->ground.img = mlx_xpm_file_to_image(mlx->mlx, GROUND_IMG,
 			&mlx->ground.width, &mlx->ground.height);
+	mlx->enemy.img = mlx_xpm_file_to_image(mlx->mlx, ENEMY_IMG,
+			&mlx->enemy.width, &mlx->enemy.height);
 	if (!mlx->coin.img || !mlx->exit.img || !mlx->wall.img || !mlx->ground.img
-		|| !mlx->player[0][0].img || !mlx->player[0][1].img ||
-		!mlx->player[0][2].img || !mlx->player[1][0].img ||
+		|| !mlx->player[0][0].img || !mlx->player[0][1].img || !mlx->enemy.img
+		|| !mlx->player[0][2].img || !mlx->player[1][0].img ||
 		!mlx->player[1][1].img || !mlx->player[1][2].img ||
 		!mlx->player[2][0].img || !mlx->player[2][1].img ||
 		!mlx->player[2][2].img || !mlx->player[3][0].img ||
@@ -95,4 +97,6 @@ void	free_images(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->wall.img);
 	if (mlx->ground.img)
 		mlx_destroy_image(mlx->mlx, mlx->ground.img);
+	if (mlx->enemy.img)
+		mlx_destroy_image(mlx->mlx, mlx->enemy.img);
 }

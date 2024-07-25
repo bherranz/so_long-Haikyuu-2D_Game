@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	end_game(t_game *game, int error)
 {
@@ -24,6 +24,8 @@ void	end_game(t_game *game, int error)
 void	move_player(t_game *game, int x, int y, char *dir)
 {
 	game->dir = dir;
+	if (game->map[y][x] == '!')
+		end_game(game, 0);
 	if (game->map[y][x] != '1')
 	{
 		if (game->map[y][x] == 'E' && game->coins != 0)
