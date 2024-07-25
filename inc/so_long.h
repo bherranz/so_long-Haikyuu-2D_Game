@@ -20,23 +20,23 @@
 # define TILE_S 81
 
 //Images paths
-# define COIN_IMG "sprites/coin.xpm"
-# define EXIT_IMG "sprites/exit.xpm"
-# define WALL_IMG "sprites/wall.xpm"
-# define GROUND_IMG "sprites/ground.xpm"
+# define COIN_IMG "textures/coin.xpm"
+# define EXIT_IMG "textures/exit.xpm"
+# define WALL_IMG "textures/wall.xpm"
+# define GROUND_IMG "textures/ground.xpm"
 //Hinata paths
-# define DOWN0 "sprites/player/tile000.xpm"
-# define DOWN1 "sprites/player/tile001.xpm"
-# define DOWN2 "sprites/player/tile002.xpm"
-# define LEFT0 "sprites/player/tile003.xpm"
-# define LEFT1 "sprites/player/tile004.xpm"
-# define LEFT2 "sprites/player/tile005.xpm"
-# define RIGHT0 "sprites/player/tile006.xpm"
-# define RIGHT1 "sprites/player/tile007.xpm"
-# define RIGHT2 "sprites/player/tile008.xpm"
-# define UP0 "sprites/player/tile009.xpm"
-# define UP1 "sprites/player/tile010.xpm"
-# define UP2 "sprites/player/tile011.xpm"
+# define DOWN0 "textures/player/tile000.xpm"
+# define DOWN1 "textures/player/tile001.xpm"
+# define DOWN2 "textures/player/tile002.xpm"
+# define LEFT0 "textures/player/tile003.xpm"
+# define LEFT1 "textures/player/tile004.xpm"
+# define LEFT2 "textures/player/tile005.xpm"
+# define RIGHT0 "textures/player/tile006.xpm"
+# define RIGHT1 "textures/player/tile007.xpm"
+# define RIGHT2 "textures/player/tile008.xpm"
+# define UP0 "textures/player/tile009.xpm"
+# define UP1 "textures/player/tile010.xpm"
+# define UP2 "textures/player/tile011.xpm"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -92,18 +92,25 @@ int		destroy(void *param);
 
 //image utils
 void	init_images(t_mlx *mlx, t_game *game);
+void	free_images(t_mlx *mlx);
+
+//draw
 void	draw_tile(t_mlx *mlx, void *img, int x, int y);
 int		draw_map(t_game *game);
 void	draw(t_game *game, int i, int j);
-void	free_images(t_mlx *mlx);
 int		draw_player(t_game *game);
 
 //move
 void	move_player(t_game *game, int x, int y, char *dir);
 
-//input control
+//input control + check map
 int		check_map(t_game *game);
 void	print_error(char *msg, char function, t_game *game);
+void	is_playable(char **map, t_game *game);
+void	is_valid(char **map, t_game *game);
+void	check_chars(t_game *game, char **map);
+void	check_walls(char **map, t_game *game);
+void	is_rectangular(char **map, t_game *game);
 
 //utils
 void	end_game(t_game *game, int error);
@@ -112,6 +119,7 @@ void	print_map(char **map);
 int		count_coins(char **map);
 char	**copy_map(char **map);
 size_t	ft_strlen_array(char **str);
+void	fill(char **map, int x, int y);
 
 //gnl
 char	*read_buffer(int fd, char *buffer);

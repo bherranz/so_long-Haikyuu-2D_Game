@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../inc/so_long.h"
 
 size_t	ft_strleng(const char *s)
 {

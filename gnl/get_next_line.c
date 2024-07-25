@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../inc/so_long.h"
 
 char	*read_buffer(int fd, char *buffer)
 {
