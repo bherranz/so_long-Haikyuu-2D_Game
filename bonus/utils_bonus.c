@@ -16,9 +16,12 @@ void	fill(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == '!')
 		return ;
-	map[x][y] = '1';
 	if (map[x][y] == 'E')
+	{
+		map[x][y] = '1';
 		return ;
+	}
+	map[x][y] = '1';
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);

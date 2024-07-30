@@ -33,6 +33,29 @@ int	check_map(t_game *game)
 	return (0);
 }
 
+void	check_newlines(char *map)
+{
+	char	current;
+	char	prev;
+	int		i;
+
+	prev = map[0];
+	current = map[1];
+	i = 1;
+	while (map[i])
+	{
+		if (current == '\n' && prev == '\n')
+		{
+			free(map);
+			write(2, "Error\nThe map must be surrounded by a wall\n", 44);
+			exit (1);
+		}
+		i++;
+		prev = current;
+		current = map[i];
+	}
+}
+
 char	**create_map(char *argv)
 {
 	char	**map;

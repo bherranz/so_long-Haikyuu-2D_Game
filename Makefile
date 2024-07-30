@@ -3,7 +3,8 @@ BONUS_NAME = .bonus
 
 SRCS = src/main.c src/check_map.c src/utils.c src/mlx_utils.c \
 		src/image_utils.c src/move.c src/draw.c\
-		gnl/get_next_line.c gnl/get_next_line_utils.c 
+		gnl/get_next_line.c gnl/get_next_line_utils.c \
+		ft_printf/ft_printf.c ft_printf/ft_nums.c ft_printf/ft_strings.c ft_printf/ft_hex.c
 
 BONUS = bonus/main_bonus.c bonus/check_map_bonus.c bonus/utils_bonus.c bonus/mlx_utils_bonus.c \
 		bonus/image_utils_bonus.c bonus/move_bonus.c bonus/draw_bonus.c\

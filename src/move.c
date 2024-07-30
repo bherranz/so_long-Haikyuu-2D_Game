@@ -38,6 +38,6 @@ void	move_player(t_game *game, int x, int y, char *dir)
 		game->player_x = x;
 		game->player_y = y;
 		game->movements++;
-		printf("Movements: %zu\n", game->movements);
+		ft_printf("Movements: %i\n", game->movements);
 	}
 }
