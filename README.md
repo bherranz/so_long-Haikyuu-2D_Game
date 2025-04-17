@@ -33,6 +33,7 @@ In this game, you play as **Hinata Shoyo**, the energetic volleyball player, nav
 | Enemy        | Shiratorizawa’s coach |
 | Walls        | Water bottles 🧴 |
 | Floor        | Volleyball gym floor 🏐 |
+| Exit         | Charm |
 
 ---
 
