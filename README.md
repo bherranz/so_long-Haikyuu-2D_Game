@@ -35,9 +35,9 @@ In this game, you play as **Hinata Shoyo**, the energetic volleyball player, nav
 | Floor        | Volleyball gym floor 🏐 |
 | Exit         | Charm |
 
-![Hinata](assets/hinata.png)
-![Coach](assets/coach.png)
-![charm](assets/charm.png)
+
+| <img src="assets/hinata.png" alt="Imagen 1" width="200"/> | <img src="assets/coach.png" alt="Imagen 2" width="250"/> | <img src="assets/charm.png" alt="Imagen 3" width="200"/> |
+|----------------------------------|----------------------------------|----------------------------------|
 
 ---
 
