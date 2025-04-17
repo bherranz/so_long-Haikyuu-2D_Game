@@ -3,7 +3,7 @@
 A 2D top-down game made with Pixer Art created as part of the 42 school curriculum, based on the **MiniLibX** graphics library.  
 This version is specially themed after the anime **Haikyuu!!**, featuring custom sprites and animations.
 
-poner foto
+![main](assets/main.gif)
 
 ---
 
@@ -34,6 +34,10 @@ In this game, you play as **Hinata Shoyo**, the energetic volleyball player, nav
 | Walls        | Water bottles 🧴 |
 | Floor        | Volleyball gym floor 🏐 |
 | Exit         | Charm |
+
+![Hinata](assets/hinata.png)
+![Coach](assets/coach.png)
+![charm](assets/charm.png)
 
 ---
 
@@ -120,7 +124,7 @@ Controls:
   - Ft_printf (my own function printf)
   - GNL (text line processor)
   - Uses system calls: open, close, read, write, printf, malloc, free, perror, strerror, exit
-
+---
 ## 📸 Match Highlights
-
-
+![win](assets/win.gif)
+![lose](assets/lose.gif)
